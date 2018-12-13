@@ -9,26 +9,27 @@ class AlexandrianNumber {
   }
 
   public ArrayList<Integer> find(int n) {
-    int x = 0;
     boolean tag = true;
-    int result = 0;
-    for(int p = 1; p <= n ; p++) {
+    int p = 1, count = 1, x, result;
+    while (count < n) {
       x = p * p + 1;
       for(int d = 2; d <= x ; d++) {
-        //System.out.print(p + " " + x + " " + d + "\n");
         if ( (x % d) == 0) {
           result = (int) (p * (p + d) * (p + (Math.pow(p,2) + 1) / d));
-          for(int k = 0; k < list.size(); k++) {
-            if (result == list.get(k)) {
+          for(int item : list) {
+            if (result == item) {
               tag = false;
+              break;
             }
           }
           if (tag) {
             list.add(result);
+            count++;
           }
           tag = true;
         }
       }
+      p++;
     }
     return list;
   }
@@ -40,9 +41,9 @@ class AlexandrianNumber {
   }
 
   public static void main(String[] args) {
-    int[] input = {1, 3, 4, 5};
+    int[] input = {7, 3, 4, 5};
     AlexandrianNumber test = new AlexandrianNumber();
-    test.find(5);
+    test.find(10);
     test.print(input);
   }
 
