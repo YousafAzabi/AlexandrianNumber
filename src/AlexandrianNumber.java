@@ -7,27 +7,28 @@ class AlexandrianNumber {
   private int[] divisorBasic = {1, 2, 5, 10, 13, 17};
 
   AlexandrianNumber() {
-    list = new ArrayList();
+    list = new ArrayList<Double>();
   }
 
   public ArrayList<Double> find(int n) {
-    int p = 1, count = 1;
-    double result, d, x;
+    int count = 1;
+    long d, x, p = 1;
+    double result;
     while (count <= n) {
       x = p * p + 1;
       d = 1;
       int i = 0;
       while (d <= p) {
         if ( (x % d) == 0) {
-          result = (double) ( p * (p + d) * (p + ((p * p) + 1) / d) );
+          result = p * (p + d) * (p + (x) / d);
           if (!list.contains(result)) {
             list.add(result);
             count++;
-            //if (count%10000 == 0)System.out.println(p + " " + d + " " + count + " " + result + " " + i);
+            if (count%10000 == 0)System.out.println(p + " " + d + " " + count + " " + result + " " + i);
           }
         }
         i++;
-        d = divisorBasic[i%6] + (24 * (int)(i/6) );
+        d = divisorBasic[i%6] + (24 * (i/6) );
       }
       p++;
     }
@@ -42,9 +43,9 @@ class AlexandrianNumber {
   }
 
   public static void main(String[] args) {
-    int[] input = {1,2};
+    int[] input = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39};
     AlexandrianNumber test = new AlexandrianNumber();
-    test.find(1000);
+    test.find(45);
     test.print(input);
   }
 
