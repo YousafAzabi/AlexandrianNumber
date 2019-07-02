@@ -24,11 +24,12 @@ class AlexandrianNumber {
           if (!list.contains(result)) {
             list.add(result);
             count++;
-            if (count%10000 == 0)System.out.println(p + " " + d + " " + count + " " + result + " " + i);
+            if ((count % 10000) == 0)
+              System.out.println(p + " " + d + " " + count + " " + result + " " + i);
           }
         }
         i++;
-        d = divisorBasic[i%6] + (24 * (i/6) );
+        d = divisorBasic[i % 6] + (24 * (i / 6) );
       }
       p++;
     }
